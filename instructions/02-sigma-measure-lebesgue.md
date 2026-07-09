@@ -18,6 +18,8 @@ docs/rigorous-probability/02-measure-theory/chapter-05-lebesgue-measure.md
 
 本教材の土台となる「測れる集合」と「測り方」を定義する。確率論では、σ-代数は事象の集まり、測度は確率を含む大きさの概念になる。ここでの定義は後続章の基準になるため、簡潔かつ厳密に書く。
 
+この担当範囲では、Cantor の点集合論、Borel 集合、Lebesgue による長さと積分の拡張という背景を必ず織り込む。抽象的な定義だけで進めず、「どの集合なら長さや確率を矛盾なく割り当てられるのか」という問題意識を読者に残す。
+
 ## 第3章で必ず扱うこと
 
 ### 中心メッセージ
@@ -35,6 +37,7 @@ docs/rigorous-probability/02-measure-theory/chapter-05-lebesgue-measure.md
 7. 可測空間 $(\Omega, \mathcal{F})$
 8. 可測写像の予告
 9. 確率論における事象
+10. 背景：観測可能な事象と数学的に構成された事象の違い
 
 ### 必須定義
 
@@ -104,6 +107,7 @@ docs/rigorous-probability/02-measure-theory/chapter-05-lebesgue-measure.md
 9. ルベーグ測度空間
 10. 非可測集合の存在の意味
 11. ほとんど至るところ
+12. 背景：Lebesgue の発想が Riemann 積分や Fourier 解析の困難をどう変えたか
 
 ### 必須定義
 
