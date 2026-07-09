@@ -1,0 +1,24 @@
+:root {
+  --ifm-color-primary: #1f6f78;
+  --ifm-color-primary-dark: #1c646c;
+  --ifm-color-primary-darker: #1a5f66;
+  --ifm-color-primary-darkest: #164e54;
+  --ifm-color-primary-light: #227a84;
+  --ifm-color-primary-lighter: #24808a;
+  --ifm-color-primary-lightest: #29919c;
+  --ifm-code-font-size: 95%;
+  --ifm-font-family-base:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0.2rem;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+  line-height: 1.35;
+}

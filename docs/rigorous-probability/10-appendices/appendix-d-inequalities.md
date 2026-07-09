@@ -1,0 +1,332 @@
+---
+title: "付録D よく使う不等式"
+sidebar_label: "付録D 不等式"
+sidebar_position: 31
+description: "Jensen、Hölder、Minkowski、Markov、Chebyshev、Cauchy-Schwarz、Chernoff、Hoeffdingの不等式を確率論で使う形でまとめる。"
+---
+
+# 付録D よく使う不等式
+
+## この付録で学ぶこと
+
+確率論の評価は不等式で進む。ここでは、本文で繰り返し使う不等式について、主張、仮定、証明または証明スケッチ、確率論での使いどころ、簡単な例を揃えてまとめる。
+
+## D.1 Jensenの不等式
+
+### 主張
+
+$\varphi$ が凸関数で、$X$ と $\varphi(X)$ が可積分ならば、
+
+$$
+\varphi(\mathbb{E}[X]) \leq \mathbb{E}[\varphi(X)]
+$$
+
+である。
+
+### 仮定
+
+$X$ は実数値可積分確率変数、$\varphi$ は $X$ の値を含む区間上の凸関数である。
+
+### 証明スケッチ
+
+凸関数には任意の点で支持直線が存在する。$a=\mathbb{E}[X]$ とすると、ある $\alpha$ により
+
+$$
+\varphi(x) \geq \varphi(a)+\alpha(x-a)
+$$
+
+が成り立つ。$x=X$ として期待値を取れば右辺の線形項が消える。
+
+### 確率論での使いどころ
+
+モーメントの比較、エントロピー、条件付き期待値、$L^p$ ノルムの評価で使う。
+
+### 簡単な例
+
+$\varphi(x)=x^2$ とすると
+
+$$
+(\mathbb{E}[X])^2 \leq \mathbb{E}[X^2]
+$$
+
+を得る。
+
+## D.2 Hölderの不等式
+
+### 主張
+
+$p,q \in [1,\infty]$ が $1/p+1/q=1$ を満たすとき、
+
+$$
+\int |fg|\,d\mu \leq \|f\|_p\|g\|_q
+$$
+
+である。
+
+### 仮定
+
+$f \in L^p(\mu)$、$g \in L^q(\mu)$ とする。
+
+### 証明スケッチ
+
+$p,q$ が有限でノルムが $0$ でない場合、$|f|/\|f\|_p$ と $|g|/\|g\|_q$ に正規化し、Youngの不等式
+
+$$
+ab \leq \frac{a^p}{p}+\frac{b^q}{q}
+$$
+
+を積分する。端点の場合は本質上限の定義から従う。
+
+### 確率論での使いどころ
+
+積の期待値、共分散、$L^p$ 空間の包含、条件付き期待値の評価で使う。
+
+### 簡単な例
+
+$p=q=2$ の場合、
+
+$$
+\mathbb{E}[|XY|]\leq \sqrt{\mathbb{E}[X^2]}\sqrt{\mathbb{E}[Y^2]}
+$$
+
+となる。
+
+## D.3 Minkowskiの不等式
+
+### 主張
+
+$p \in [1,\infty]$ に対して、
+
+$$
+\|f+g\|_p \leq \|f\|_p+\|g\|_p
+$$
+
+である。
+
+### 仮定
+
+$f,g \in L^p(\mu)$ とする。
+
+### 証明スケッチ
+
+$1<p<\infty$ では、$|f+g|^p \leq (|f|+|g|)|f+g|^{p-1}$ としてHölderの不等式を適用する。$p=1$ は三角不等式を積分すればよい。$p=\infty$ は本質上限の性質から従う。
+
+### 確率論での使いどころ
+
+$L^p$ ノルムが本当にノルムになること、確率変数列の $L^p$ 収束を扱うときに使う。
+
+### 簡単な例
+
+$p=2$ なら、平方可積分確率変数について
+
+$$
+\sqrt{\mathbb{E}[(X+Y)^2]} \leq \sqrt{\mathbb{E}[X^2]}+\sqrt{\mathbb{E}[Y^2]}
+$$
+
+である。
+
+## D.4 Markovの不等式
+
+### 主張
+
+$X \geq 0$ かつ $a>0$ ならば、
+
+$$
+P(X \geq a) \leq \frac{\mathbb{E}[X]}{a}
+$$
+
+である。
+
+### 仮定
+
+$X$ は非負確率変数で、$\mathbb{E}[X]$ が有限または拡張実数として定義されている。
+
+### 証明
+
+$X \geq a\mathbf{1}_{\{X\geq a\}}$ なので、期待値の単調性より
+
+$$
+\mathbb{E}[X]\geq aP(X\geq a)
+$$
+
+である。両辺を $a$ で割ればよい。
+
+### 確率論での使いどころ
+
+尾確率を期待値から評価する最初の道具である。大数の法則、集中不等式、モーメント評価の入口になる。
+
+### 簡単な例
+
+$X\geq0$ で $\mathbb{E}[X]=2$ なら、
+
+$$
+P(X\geq 10)\leq 0.2
+$$
+
+である。
+
+## D.5 Chebyshevの不等式
+
+### 主張
+
+$X$ が平均 $\mu$、分散 $\sigma^2$ をもつならば、任意の $\varepsilon>0$ について
+
+$$
+P(|X-\mu|\geq \varepsilon)\leq \frac{\sigma^2}{\varepsilon^2}
+$$
+
+である。
+
+### 仮定
+
+$X \in L^2$ とし、$\mu=\mathbb{E}[X]$、$\sigma^2=\mathbb{E}[(X-\mu)^2]$ とする。
+
+### 証明
+
+非負確率変数 $(X-\mu)^2$ にMarkovの不等式を適用する。
+
+### 確率論での使いどころ
+
+標本平均の分散評価から弱法則を証明するときに使う。
+
+### 簡単な例
+
+$\mathbb{E}[X]=0$、$\operatorname{Var}(X)=1$ なら、
+
+$$
+P(|X|\geq 5)\leq \frac{1}{25}
+$$
+
+である。
+
+## D.6 Cauchy-Schwarzの不等式
+
+### 主張
+
+$f,g \in L^2(\mu)$ ならば、
+
+$$
+\left|\int fg\,d\mu\right| \leq \|f\|_2\|g\|_2
+$$
+
+である。
+
+### 仮定
+
+$f,g$ は実数値または複素数値の二乗可積分関数である。
+
+### 証明スケッチ
+
+$\|f-tg\|_2^2 \geq 0$ を $t$ の二次式と見て判別式を評価する。複素数値の場合は内積の共役に注意する。
+
+### 確率論での使いどころ
+
+共分散、相関係数、二乗平均収束、Hilbert空間としての $L^2$ で使う。
+
+### 簡単な例
+
+確率変数 $X,Y \in L^2$ について
+
+$$
+|\mathbb{E}[XY]|\leq \sqrt{\mathbb{E}[X^2]}\sqrt{\mathbb{E}[Y^2]}
+$$
+
+である。
+
+## D.7 Chernoff bound
+
+### 主張
+
+任意の $t>0$ について、
+
+$$
+P(X\geq a)\leq e^{-ta}\mathbb{E}[e^{tX}]
+$$
+
+である。したがって
+
+$$
+P(X\geq a)\leq \inf_{t>0} e^{-ta}\mathbb{E}[e^{tX}]
+$$
+
+である。
+
+### 仮定
+
+$\mathbb{E}[e^{tX}]$ が考えている $t>0$ で有限であるとする。
+
+### 証明
+
+$e^{tX}$ は非負で、$X\geq a$ なら $e^{tX}\geq e^{ta}$ である。Markovの不等式を $e^{tX}$ に適用する。
+
+### 確率論での使いどころ
+
+指数モーメントを使って尾確率を鋭く評価する。独立な和、暗号理論の無視できる確率、機械学習の汎化評価でよく現れる。
+
+### 簡単な例
+
+$X$ が標準正規分布なら $\mathbb{E}[e^{tX}]=e^{t^2/2}$ なので、
+
+$$
+P(X\geq a)\leq \inf_{t>0} e^{-ta+t^2/2}=e^{-a^2/2}
+$$
+
+を得る。
+
+## D.8 Hoeffding bound
+
+### 主張
+
+独立確率変数 $X_1,\ldots,X_n$ が $a_i \leq X_i \leq b_i$ をほとんど確実に満たすとき、$S_n=\sum_{i=1}^n (X_i-\mathbb{E}[X_i])$ について
+
+$$
+P(S_n\geq t)\leq \exp\left(-\frac{2t^2}{\sum_{i=1}^n (b_i-a_i)^2}\right)
+$$
+
+である。
+
+### 仮定
+
+$X_1,\ldots,X_n$ は独立で、各 $X_i$ は有界である。
+
+### 証明スケッチ
+
+Hoeffdingの補題により
+
+$$
+\mathbb{E}[e^{\lambda(X_i-\mathbb{E}[X_i])}]
+\leq \exp\left(\frac{\lambda^2(b_i-a_i)^2}{8}\right)
+$$
+
+が成り立つ。独立性で指数モーメントを積に分解し、Chernoff bound を適用して $\lambda$ を最適化する。
+
+### 確率論での使いどころ
+
+有界独立確率変数の和が平均から大きく外れる確率を指数的に評価する。標本平均、乱択アルゴリズム、統計学習で基本的である。
+
+### 簡単な例
+
+$X_i \in [0,1]$ が独立同分布で平均 $m$ をもち、$\bar X_n=n^{-1}\sum_i X_i$ とすると、
+
+$$
+P(\bar X_n-m\geq \varepsilon)\leq e^{-2n\varepsilon^2}
+$$
+
+である。
+
+## この付録の要点
+
+- Jensen、Hölder、Minkowski、Cauchy-Schwarz は積分と $L^p$ 空間の基本評価を支える。
+- Markov と Chebyshev は尾確率評価の入口である。
+- Chernoff と Hoeffding は指数型の集中評価を与える。
+- 不等式を使うときは、可積分性、独立性、有界性などの仮定を必ず確認する。
+
+## 演習問題
+
+1. ★ Jensenの不等式から $(\mathbb{E}[X])^2\leq \mathbb{E}[X^2]$ を導け。
+2. ★ 非負確率変数 $X$ に対して Markovの不等式を証明せよ。
+3. ★★ Chebyshevの不等式を Markovの不等式から導け。
+4. ★★ Cauchy-Schwarzの不等式を使って $|\operatorname{Cov}(X,Y)|\leq \sqrt{\operatorname{Var}(X)}\sqrt{\operatorname{Var}(Y)}$ を示せ。
+5. ★★ $p=q=2$ の場合のHölderの不等式が Cauchy-Schwarzの不等式であることを確認せよ。
+6. ★★★ Chernoff bound を標準正規分布に適用し、$P(X\geq a)\leq e^{-a^2/2}$ を導け。
+7. ★★★ $X_i \in [0,1]$ の独立同分布列について、Hoeffding bound から標本平均の片側評価を導け。
