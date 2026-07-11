@@ -78,6 +78,56 @@ $\mathcal{F}$ は「観測できる事象」「確率を問うことを許され
 3. $A,B \in \mathcal{A}$ ならば $A \cup B \in \mathcal{A}$
 :::
 
+### 疑問：補集合に関する条件は、補集合の定義そのものではないのか
+
+:::info[読者からの疑問]
+「$A\in\mathcal A$ ならば $A^c\in\mathcal A$」は、補集合の定義そのものに見える。
+:::
+
+補集合の**定義**と、集合族が補集合について**閉じていること**は別である。補集合の定義は
+
+$$
+A^c=\Omega\setminus A
+$$
+
+であり、$A\subset\Omega$ なら常に $A^c$ を作れる。一方、
+
+$$
+A\in\mathcal A\quad\Longrightarrow\quad A^c\in\mathcal A
+$$
+
+は、作った補集合が、採用した集合族 $\mathcal A$ の中にも入っていることを要求する。この性質を**補集合について閉じている（closed under complements）**という。
+
+たとえば
+
+$$
+\Omega=\{1,2,3\},
+\qquad
+\mathcal C=\{\emptyset,\{1\},\Omega\}
+$$
+
+とする。$\{1\}$ の補集合は問題なく定義でき、
+
+$$
+\{1\}^c=\{2,3\}
+$$
+
+である。しかし $\{2,3\}\notin\mathcal C$ なので、$\mathcal C$ は補集合について閉じていない。したがって $\mathcal C$ は集合代数でも σ-代数でもない。
+
+:::tip[記号の階層]
+$A$ は $\Omega$ の部分集合であり、$\mathcal A$ はそのような集合を集めた集合族である。したがって
+
+$$
+x\in A,
+\qquad
+A\in\mathcal A,
+\qquad
+\mathcal A\subset 2^\Omega
+$$
+
+は異なる階層の所属・包含を表す。普通の $A$ とカリグラフィック体の $\mathcal A$ を区別して読むことが重要である。
+:::
+
 集合代数は有限回の集合演算に閉じている。確率論では、無限回の試行や極限事象を扱うため、有限和だけでなく可算和に閉じた集合族が必要になる。
 
 :::info[定義：σ-代数]
