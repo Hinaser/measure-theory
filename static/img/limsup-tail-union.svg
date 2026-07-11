@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">上極限を tail union から理解するアニメーション</title>
+  <desc id="desc">時刻 n 以後の集合の和を表す領域が右へ移動し、毎回現れる点と何度も再登場する点は残るが、途中から現れない点は脱落する。</desc>
+  <style>
+    text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: #17202a; letter-spacing: 0; }
+    .title { font-size: 25px; font-weight: 700; }
+    .label { font-size: 17px; font-weight: 650; }
+    .small { font-size: 14px; }
+    .formula { font-family: "Times New Roman", serif; font-size: 19px; }
+    .grid { stroke: #ccd3da; stroke-width: 1; }
+    .present { fill: #157a6e; }
+    .absent { fill: #edf1f4; }
+    .tail { fill: #f3aa3d; opacity: .15; }
+    .cut { stroke: #c44720; stroke-width: 4; }
+    .survive { fill: #e8f5f1; stroke: #157a6e; stroke-width: 2; }
+    .drop { fill: #fdf0ec; stroke: #c44720; stroke-width: 2; }
+  </style>
+
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="36" y="45" class="title">上極限：どれだけ先へ進んでも、また現れる点を残す</text>
+  <text x="36" y="76" class="small">橙色の領域は、その時点 n 以後の集合列を調べる tail（未来部分）です。</text>
+
+  <text x="45" y="145" class="label">点 x</text>
+  <text x="45" y="225" class="label">点 y</text>
+  <text x="45" y="305" class="label">点 z</text>
+  <text x="118" y="111" class="small">所属する Aₖ を時刻順に表示</text>
+
+  <g class="grid">
+    <line x1="160" y1="120" x2="880" y2="120"/>
+    <line x1="160" y1="320" x2="880" y2="320"/>
+    <line x1="160" y1="120" x2="160" y2="320"/>
+    <line x1="232" y1="120" x2="232" y2="320"/><line x1="304" y1="120" x2="304" y2="320"/>
+    <line x1="376" y1="120" x2="376" y2="320"/><line x1="448" y1="120" x2="448" y2="320"/>
+    <line x1="520" y1="120" x2="520" y2="320"/><line x1="592" y1="120" x2="592" y2="320"/>
+    <line x1="664" y1="120" x2="664" y2="320"/><line x1="736" y1="120" x2="736" y2="320"/>
+    <line x1="808" y1="120" x2="808" y2="320"/><line x1="880" y1="120" x2="880" y2="320"/>
+  </g>
+
+  <g class="small" text-anchor="middle">
+    <text x="196" y="345">A₁</text><text x="268" y="345">A₂</text><text x="340" y="345">A₃</text>
+    <text x="412" y="345">A₄</text><text x="484" y="345">A₅</text><text x="556" y="345">A₆</text>
+    <text x="628" y="345">A₇</text><text x="700" y="345">A₈</text><text x="772" y="345">A₉</text><text x="844" y="345">A₁₀ …</text>
+  </g>
+
+  <rect class="tail" x="160" y="120" width="720" height="200">
+    <animate attributeName="x" values="160;232;304;376;448;520;592;664;736;808;160" dur="12s" repeatCount="indefinite"/>
+    <animate attributeName="width" values="720;648;576;504;432;360;288;216;144;72;720" dur="12s" repeatCount="indefinite"/>
+  </rect>
+  <line class="cut" x1="160" y1="112" x2="160" y2="326">
+    <animate attributeName="x1" values="160;232;304;376;448;520;592;664;736;808;160" dur="12s" repeatCount="indefinite"/>
+    <animate attributeName="x2" values="160;232;304;376;448;520;592;664;736;808;160" dur="12s" repeatCount="indefinite"/>
+  </line>
+
+  <!-- x appears at every time. -->
+  <g class="present">
+    <circle cx="196" cy="140" r="14"/><circle cx="268" cy="140" r="14"/><circle cx="340" cy="140" r="14"/>
+    <circle cx="412" cy="140" r="14"/><circle cx="484" cy="140" r="14"/><circle cx="556" cy="140" r="14"/>
+    <circle cx="628" cy="140" r="14"/><circle cx="700" cy="140" r="14"/><circle cx="772" cy="140" r="14"/><circle cx="844" cy="140" r="14"/>
+  </g>
+  <!-- y appears repeatedly. -->
+  <g>
+    <circle class="absent" cx="196" cy="220" r="14"/><circle class="present" cx="268" cy="220" r="14"/>
+    <circle class="absent" cx="340" cy="220" r="14"/><circle class="present" cx="412" cy="220" r="14"/>
+    <circle class="absent" cx="484" cy="220" r="14"/><circle class="present" cx="556" cy="220" r="14"/>
+    <circle class="absent" cx="628" cy="220" r="14"/><circle class="present" cx="700" cy="220" r="14"/>
+    <circle class="absent" cx="772" cy="220" r="14"/><circle class="present" cx="844" cy="220" r="14"/>
+  </g>
+  <!-- z disappears after time 3. -->
+  <g>
+    <circle class="present" cx="196" cy="300" r="14"/><circle class="present" cx="268" cy="300" r="14"/><circle class="present" cx="340" cy="300" r="14"/>
+    <circle class="absent" cx="412" cy="300" r="14"/><circle class="absent" cx="484" cy="300" r="14"/><circle class="absent" cx="556" cy="300" r="14"/>
+    <circle class="absent" cx="628" cy="300" r="14"/><circle class="absent" cx="700" cy="300" r="14"/><circle class="absent" cx="772" cy="300" r="14"/><circle class="absent" cx="844" cy="300" r="14"/>
+  </g>
+
+  <rect x="40" y="378" width="270" height="92" rx="6" class="survive"/>
+  <text x="58" y="407" class="label">x は残る</text>
+  <text x="58" y="434" class="small">どの n 以後にも必ず現れる</text>
+  <text x="58" y="457" class="formula">x ∈ lim sup Aₙ</text>
+
+  <rect x="345" y="378" width="270" height="92" rx="6" class="survive"/>
+  <text x="363" y="407" class="label">y も残る</text>
+  <text x="363" y="434" class="small">間が空いても無限回戻る</text>
+  <text x="363" y="457" class="formula">y ∈ lim sup Aₙ</text>
+
+  <rect x="650" y="378" width="270" height="92" rx="6" class="drop"/>
+  <text x="668" y="407" class="label">z は脱落する</text>
+  <text x="668" y="434" class="small">n = 4 以後には現れない</text>
+  <text x="668" y="457" class="formula">z ∉ lim sup Aₙ</text>
+
+  <text x="480" y="505" text-anchor="middle" class="small">● 所属　○ 不所属　｜ 橙線を右へ動かしても未来に ● が見つかる点だけが上極限に残る</text>
+</svg>
