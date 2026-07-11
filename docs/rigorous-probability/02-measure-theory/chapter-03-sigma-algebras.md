@@ -128,6 +128,48 @@ $$
 は異なる階層の所属・包含を表す。普通の $A$ とカリグラフィック体の $\mathcal A$ を区別して読むことが重要である。
 :::
 
+### 疑問：$A$ は $\Omega$ の要素ではないのか
+
+確率論で通常想定する役割では、その理解でよい。$\mathcal A$ が $\Omega$ 上の集合族で、$A\in\mathcal A$ なら、
+
+$$
+\mathcal A\subset 2^\Omega
+\quad\Longrightarrow\quad
+A\subset\Omega
+$$
+
+である。典型的には、
+
+$$
+\omega\in A,
+\qquad
+A\in\mathcal A,
+\qquad
+\mathcal A\subset 2^\Omega
+$$
+
+と読む。それぞれの役割は次のように異なる。
+
+| 記号 | 役割 | 何の要素か |
+|---|---|---|
+| $\omega$（小文字のオメガ） | 一つの結果・標本点 | $\omega\in\Omega$ |
+| $A$（エー） | 標本点を集めた事象 | $A\subset\Omega$ かつ $A\in\mathcal A$ |
+| $\mathcal A$（カリグラフィック・エー） | 事象を集めた集合族 | $\mathcal A\subset 2^\Omega$ |
+
+したがって、通常の確率モデルでは $A$ を一つの結果とは考えず、結果を集めた事象として扱う。「$A$ は $\Omega$ の要素」というより「$A$ は $\Omega$ の部分集合」である。
+
+:::warning[純粋集合論としての例外]
+$A\subset\Omega$ から $A\notin\Omega$ が論理的に従うわけではない。$\Omega$ の要素自体が集合なら、偶然 $A\subset\Omega$ と $A\in\Omega$ が両方成り立つこともある。例えば
+
+$$
+\Omega=\{\emptyset,\{\emptyset\}\}
+$$
+
+なら、$\emptyset\subset\Omega$ かつ $\emptyset\in\Omega$ である。ただし、これは集合論上許されるというだけで、通常の確率論では標本点・事象・事象族という役割を分けて読むほうが理解しやすい。
+:::
+
+包含記号 $\subset$ は「中の要素を全て共有する」という関係、所属記号 $\in$ は「左側の対象が右側の集合の一要素である」という関係である。この二つを型の違いとして意識すると、σ-代数の定義を追いやすくなる。
+
 集合代数は有限回の集合演算に閉じている。確率論では、無限回の試行や極限事象を扱うため、有限和だけでなく可算和に閉じた集合族が必要になる。
 
 :::info[定義：σ-代数]
