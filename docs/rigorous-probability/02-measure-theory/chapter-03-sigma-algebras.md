@@ -74,9 +74,19 @@ $\mathcal{F}$ は「観測できる事象」「確率を問うことを許され
 集合 $\Omega$ の部分集合族 $\mathcal{A} \subset 2^\Omega$ が次を満たすとき、$\mathcal{A}$ を $\Omega$ 上の集合代数という。
 
 1. $\Omega \in \mathcal{A}$
-2. $A \in \mathcal{A}$ ならば $A^c \in \mathcal{A}$
-3. $A,B \in \mathcal{A}$ ならば $A \cup B \in \mathcal{A}$
+2. 任意の $A\in\mathcal A$ に対して、$\Omega\setminus A\in\mathcal A$
+3. 任意の $A,B\in\mathcal A$ に対して、$A\cup B\in\mathcal A$
 :::
+
+この定義の $A,B$ は、前もって特定の集合として定義された記号ではない。「$\mathcal A$ の要素をどれでも一つ、または二つ選ぶ」という**ダミー変数（dummy variable）**である。論理記号を使えば、第2条件は
+
+$$
+\forall A\in\mathcal A,
+\quad
+\Omega\setminus A\in\mathcal A
+$$
+
+と書ける。数学書では「$A\in\mathcal A$ ならば」と書くだけで、この「任意の」を暗黙にすることが多い。本書では初出の定義で量化の範囲が分かるよう、任意の対象であることを明示する。
 
 ### 疑問：補集合に関する条件は、補集合の定義そのものではないのか
 
@@ -215,8 +225,8 @@ $$
 集合 $\Omega$ の部分集合族 $\mathcal{F} \subset 2^\Omega$ が次を満たすとき、$\mathcal{F}$ を $\Omega$ 上の σ-代数という。
 
 1. $\Omega \in \mathcal{F}$
-2. $A \in \mathcal{F}$ ならば $A^c \in \mathcal{F}$
-3. $A_1,A_2,\ldots \in \mathcal{F}$ ならば
+2. 任意の $A\in\mathcal F$ に対して、$\Omega\setminus A\in\mathcal F$
+3. $\mathcal F$ の任意の集合列 $(A_n)_{n=1}^{\infty}$ に対して、
    $$
    \bigcup_{n=1}^{\infty} A_n \in \mathcal{F}
    $$
