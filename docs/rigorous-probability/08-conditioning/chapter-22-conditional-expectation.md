@@ -13,6 +13,17 @@ description: "条件付き期待値を部分σ-代数に関する可測な確率
 
 この章では、有限分割の場合の計算から始め、Radon-Nikodym 定理による構成、一意性、基本性質、塔性質、独立性との関係、$L^2$ 射影としての意味、ベイズの定理との関係を扱う。
 
+## 用語と記号の読み方
+
+| 用語（読み） | English | 記号・読み方 | この章での意味 |
+|---|---|---|---|
+| 条件付き期待値（じょうけんつききたいち） | conditional expectation（コンディショナル・エクスペクテーション） | $\mathbb{E}[X \mathbin{\vert} \mathcal{G}]$：「イー・オブ・エックス・ギブン・カリグラフィック・ジー」 | 情報 $\mathcal{G}$ のもとでの $X$ の平均的な予測 |
+| 部分 $\sigma$-代数（ぶぶんシグマだいすう） | sub-$\sigma$-algebra（サブ・シグマ・アルジェブラ） | $\mathcal{G}$：「カリグラフィック・ジー」 | 条件として利用できる情報を表す集合族。$\mathcal{G}$ という文字自体に固定の意味はない |
+| 可積分（かせきぶん） | integrable（インテグラブル） | $X\in L^1$：「エックス・イン・エル・ワン」 | $\mathbb{E}[\lvert X\rvert]<\infty$ であり、条件付き期待値を定義できること |
+| 塔性質（とうせいしつ） | tower property（タワー・プロパティ） | $\mathbb{E}[\mathbb{E}[X\mathbin{\vert}\mathcal{G}]\mathbin{\vert}\mathcal{H}]$ | 情報を段階的に粗くして平均しても、直接その情報で平均するのと同じという性質 |
+| ラドン・ニコディム微分 | Radon--Nikodym derivative（ラドン・ニコディム・デリバティブ） | $d\nu/dP$：「ディー・ニュー・オーバー・ディー・ピー」 | 条件付き期待値の存在を与える測度の密度 |
+| 直交射影（ちょっこうしゃえい） | orthogonal projection（オーソゴナル・プロジェクション） | $L^2$：「エル・ツー」 | 二乗可積分な場合に、条件付き期待値を最良近似として読む見方 |
+
 ## 前提知識
 
 確率空間 $(\Omega,\mathcal{F},P)$、可積分確率変数 $X\in L^1$、部分 σ-代数、第16章の[Radon-Nikodym 定理](../06-independence/chapter-16-radon-nikodym.md)、第9章の[$L^2$ 空間](../03-integration/chapter-09-lp-spaces.md)の内積を使う。
